@@ -1,6 +1,7 @@
 //user.controller.ts
 
 import { Request, Response } from 'express';
+import { omit } from 'lodash';
 import logger from '../utils/logger';
 import { createUser } from '../service/user.service';
 import { CreateUserInput } from '../schema/user.schema';
@@ -11,7 +12,7 @@ export async function createUserHandler(
 ) {
   try {
     const user = await createUser(req.body);
-    res.send(user);
+    res.send(omit(user.toJSON(), 'password'));
   } catch (e: any) {
     logger.error(e);
     res.status(409).send(e.message);
