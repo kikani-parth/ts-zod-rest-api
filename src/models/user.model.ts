@@ -3,14 +3,14 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 
 // Define an interface for the user fields
-interface IUser {
+export interface UserInput {
   email: string;
   name: string;
   password: string;
 }
 
-// Extend IUser with Mongoose Document & Methods
-export interface UserDocument extends IUser, Document {
+// Extend UserInput with Mongoose Document & Methods
+export interface UserDocument extends UserInput, Document {
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
