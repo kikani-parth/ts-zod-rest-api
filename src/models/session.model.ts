@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 import { UserDocument } from './user.model';
 
-export interface SchemaDocument extends Document {
+export interface SessionDocument extends Document {
   user: UserDocument['_id'];
   valid: boolean;
   userAgent: string;
@@ -14,7 +14,7 @@ export interface SchemaDocument extends Document {
 }
 
 // Define Mongoose schema
-const sessionSchema = new Schema<SchemaDocument>(
+const sessionSchema = new Schema<SessionDocument>(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     valid: { type: Boolean, default: true },
@@ -26,7 +26,7 @@ const sessionSchema = new Schema<SchemaDocument>(
 );
 
 // Create a Mongoose model
-const SessionModel: Model<SchemaDocument> = mongoose.model<SchemaDocument>(
+const SessionModel: Model<SessionDocument> = mongoose.model<SessionDocument>(
   'Session',
   sessionSchema
 );
