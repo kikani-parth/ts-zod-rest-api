@@ -1,3 +1,5 @@
+// session.model.ts
+
 import mongoose, { Document, Schema, Model } from 'mongoose';
 import bcrypt from 'bcrypt';
 import config from 'config';
