@@ -45,7 +45,7 @@ export async function updateProductHandler(
     if (!product) {
       res.status(404).json({ message: 'Product not found' });
       return;
-    } else if (product.user !== userId) {
+    } else if (product.user?.toString() !== userId) {
       res.status(403).json({ message: 'Unauthorized to update this product' });
       return;
     }
@@ -94,7 +94,7 @@ export async function deleteProductHandler(
 
     if (!product) {
       res.status(404).json({ message: 'Product not found' });
-    } else if (product.user !== userId) {
+    } else if (product.user?.toString() !== userId) {
       res.status(403).json({ message: 'Unauthorized to delete this product' });
     }
 
