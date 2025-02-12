@@ -28,6 +28,8 @@ npm install
 
 ### 3. Set up environment variables:
 
+**Note: Make sure you add .env to your .gitignore before pushing any changes to your repository.**
+
 Create a .env file in the root directory and add the following variables:
 ```
 PRIVATE_KEY=your_private_key_here
