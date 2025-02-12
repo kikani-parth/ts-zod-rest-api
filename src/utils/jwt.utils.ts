@@ -2,10 +2,11 @@ import jwt from 'jsonwebtoken';
 import config from 'config';
 
 const privateKeyBase64 = config.get<string>('privateKey');
-const publicKey = config.get<string>('publicKey');
+const publicKeyBase64 = config.get<string>('publicKey');
 
-// Decode the private key from base64
+// Decode the private and public keys from base64
 const privateKey = Buffer.from(privateKeyBase64, 'base64').toString('utf-8');
+const publicKey = Buffer.from(publicKeyBase64, 'base64').toString('utf-8');
 
 export function signJwt(payload: Object, options: jwt.SignOptions = {}) {
   return jwt.sign(payload, privateKey, { algorithm: 'RS256', ...options });
